@@ -15,6 +15,6 @@ public class CustomerService {
 	public void addUser(Customer customer) {
 		customerRepository.save(customer);
 	}
-
 	
 }
+

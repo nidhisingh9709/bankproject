@@ -27,6 +27,7 @@ public class Customer {
 	//Gender
 	@NotBlank
 	@NotNull
+	@Pattern(regexp ="^M(ale)?$|^F(emale)?$")
 	private String gender;
 	
 	//Date of birth
