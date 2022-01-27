@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +14,22 @@ public class DepositService {
 	@Autowired
 	private depositRepository depositRepository;
 	
-	public void addDeposit(Deposit deposit, Integer id) {
+	public Iterable<Deposit> getDeposit() {
+		return depositRepository.findAll();
+	}
+	
+	public void saveDeposit(Deposit deposit) {
 		depositRepository.save(deposit);
+	}
+
+	public Optional<Deposit> getDeposits(Integer id) {
+		// TODO Auto-generated method stub
+		return depositRepository.findById(id);
+	}
+
+	public void deleteDeposit(Integer id) {
+		// TODO Auto-generated method stub
+		depositRepository.deleteById(id);
 	}
 	
 }

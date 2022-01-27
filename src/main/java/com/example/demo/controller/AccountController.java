@@ -1,7 +1,5 @@
 package com.example.demo.controller;
 
-import java.util.Optional;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,34 +12,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.entity.Customer;
-import com.example.demo.service.CustomerService;
-
+import com.example.demo.entity.Account;
+import com.example.demo.service.AccountService;
 
 @RestController
-public class CustomerController {
+public class AccountController {
 
 	@Autowired
-	CustomerService customerService;
+	AccountService accountService;
 	
-	@GetMapping("/customer")
-	Iterable<Customer> getcustomer() {
-		return customerService.getCustomer();
+	@GetMapping("/account")
+	public Iterable<Account> getAccount(){
+		return accountService.getAccount();
 	}
-
-	@GetMapping("/customer/{id}")
-	Optional<Customer> getCustomers(@PathVariable("id") Integer id) {
-		return customerService.getCustomers(id);
-	}
-
-	@PostMapping("/customer")
+	@PostMapping("/account")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	void addCustomer(@RequestBody @Valid Customer customer) {
-		customerService.addUser(customer);
-			
+	public void saveAccount(@RequestBody @Valid Account account) {
+		accountService.saveAccount(account);
 	}
-	@DeleteMapping("/deposit/{id}")
-	void deleteDeposit(@PathVariable("id") Integer id) {
-		customerService.deleteDeposit(id);
+	
+	@DeleteMapping("/account/{id}")
+	public void deleteAccount(@PathVariable("id") Integer id) {
+		accountService.deleteAccount(id);
 	}
 }
