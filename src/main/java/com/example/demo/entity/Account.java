@@ -25,7 +25,8 @@ public class Account {
 	@Column(name="Customer_id")
     private long customerId;
     
-    AccountType account;
+    
+    AccountType account; //created a reference for Enum AccountType
     private String accountType;
 	
     @NotBlank

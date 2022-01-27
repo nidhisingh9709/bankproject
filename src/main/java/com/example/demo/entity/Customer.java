@@ -14,6 +14,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.sun.istack.NotNull;
 
 @Entity
@@ -32,19 +34,16 @@ public class Customer {
 
 	// Gender
 	@NotBlank
-	@NotNull
 	@Pattern(regexp = "^M(ale)?$|^F(emale)?$")
 	private String gender;
 
 	// Date of birth
 	@NotBlank
-	@NotNull
-
+    @DateTimeFormat(pattern="dd/mm/yyyy")
 	private String dob;
 
 	// Address
 	@NotBlank
-	@NotNull
 	@Size(max = 50)
 	private String address;
 
@@ -57,14 +56,12 @@ public class Customer {
 
 	// State
 	@NotBlank
-	@NotNull
 	@Size(max = 25)
 	@Pattern(regexp = "^[a-z A-Z]+$")
 	private String state;
 
 	// ZIP/PIN
 	@NotBlank
-	@NotNull
 	@Pattern(regexp = "[0-9 ]+")
 	@Size(max = 7)
 	private String pin;
@@ -81,7 +78,6 @@ public class Customer {
 
 	// Email
 	@Email
-	@NotNull
 	@NotBlank
 	@Size(max = 30)
 	@Pattern(regexp = "^[0-9 a-z A-Z ]+ @[0-9 a-z A-Z .-]+$")
